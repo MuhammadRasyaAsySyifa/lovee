@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* Mencegah scroll */
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      color: #e63946;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .romantic-gif {
+      width: 300px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .buttons button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    #like-btn {
+      background-color: #38b000;
+      color: white;
+    }
+
+    #like-btn:hover {
+      background-color: #218000;
+    }
+
+    #dislike-btn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #dislike-btn:hover {
+      background-color: #d00045;
+    }
+
+    .flower {
+      position: absolute;
+      animation: float 3s linear infinite;
+      pointer-events: none;
+    }
+
+    .angry {
+      position: fixed;
+      font-size: 5rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: red;
+      animation: fadeOut 2s forwards;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>sayangg, kamu cinta aku tidak??</h1>
+    <img src="https://i.pinimg.com/originals/b0/9a/06/b09a0682c2cd4d291bf195d52870affd.gif" alt="Funny Romantic Gif" class="romantic-gif">
+    <div class="buttons">
+      <button id="like-btn">Iyyaaa</button>
+      <button id="dislike-btn">GAQQKK</button>
+    </div>
+  </div>
+
+  <script>
+    // Fungsi untuk menampilkan emoji marah
+    function showAngryEmoji() {
+      const angryEmoji = document.createElement('div');
+      angryEmoji.className = 'angry';
+      angryEmoji.textContent = '😡'; // Emoji marah
+      document.body.appendChild(angryEmoji);
+
+      setTimeout(() => {
+        angryEmoji.remove();
+      }, 2000); // Hapus emoji setelah 2 detik
+    }
+
+    // Event Listener untuk tombol Tidak Suka
+    const dislikeBtn = document.getElementById('dislike-btn');
+    dislikeBtn.addEventListener('click', () => {
+      showAngryEmoji();
+    });
+
+    // Fungsi untuk membuat bunga yang bervariasi
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+
+      // Pilih bunga acak
+      const flowers = ['🌸', '🌼', '🌹', '💮', '🌺'];
+      const randomFlower = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.textContent = randomFlower;
+
+      const randomX = Math.random() * window.innerWidth;
+      const randomY = Math.random() * window.innerHeight;
+      const randomSize = Math.random() * 30 + 20; // Ukuran acak antara 20-50px
+
+      flower.style.left = `${randomX}px`;
+      flower.style.top = `${randomY}px`;
+      flower.style.fontSize = `${randomSize}px`;
+      flower.style.position = 'absolute';
+
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 3000);
+    }
+
+    // Event Listener untuk tombol Suka
+    const likeBtn = document.getElementById('like-btn');
+    likeBtn.addEventListener('click', () => {
+      for (let i = 0; i < 50; i++) {
+        createFlower();
+      }
+    });
+  </script>
+</body>
+</html>
