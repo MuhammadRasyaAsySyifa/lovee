@@ -23,16 +23,19 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px; /* Membatasi ukuran maksimal */
     }
 
     h1 {
       color: #e63946;
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 20px;
     }
 
     .romantic-gif {
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
       height: auto;
       margin-bottom: 20px;
       border-radius: 10px;
@@ -47,6 +50,8 @@
       border-radius: 5px;
       cursor: pointer;
       transition: transform 0.2s ease, background-color 0.3s;
+      width: 100%;
+      max-width: 150px; /* Membatasi lebar tombol */
     }
 
     #like-btn {
@@ -95,7 +100,8 @@
     }
 
     .modal-content img {
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
       height: auto;
       border-radius: 10px;
       margin-bottom: 20px;
@@ -114,6 +120,26 @@
       100% {
         transform: translateY(-200px);
         opacity: 0;
+      }
+    }
+
+    /* Responsif untuk layar kecil */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem; /* Ukuran font lebih kecil */
+      }
+
+      .buttons button {
+        font-size: 1rem; /* Ukuran font tombol lebih kecil */
+        padding: 8px 16px;
+      }
+
+      .romantic-gif {
+        width: 80%;
+      }
+
+      .modal-content img {
+        max-width: 80%;
       }
     }
   </style>
