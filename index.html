@@ -73,14 +73,37 @@
       pointer-events: none;
     }
 
-    .angry {
+    /* Modal Styles */
+    .modal {
+      display: none;
       position: fixed;
-      font-size: 5rem;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: red;
-      animation: fadeOut 2s forwards;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content p {
+      font-size: 1.5rem;
+      color: #e63946;
     }
 
     @keyframes float {
@@ -90,15 +113,6 @@
       }
       100% {
         transform: translateY(-200px);
-        opacity: 0;
-      }
-    }
-
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-      100% {
         opacity: 0;
       }
     }
@@ -114,23 +128,30 @@
     </div>
   </div>
 
-  <script>
-    // Fungsi untuk menampilkan emoji marah
-    function showAngryEmoji() {
-      const angryEmoji = document.createElement('div');
-      angryEmoji.className = 'angry';
-      angryEmoji.textContent = '😡'; // Emoji marah
-      document.body.appendChild(angryEmoji);
+  <!-- Modal untuk GIF dan Teks -->
+  <div id="dislikeModal" class="modal">
+    <div class="modal-content">
+      <img src="https://media.tenor.com/jxDVJVrchSwAAAAj/tkthao219-bubududu.gif" alt="Angry Gif">
+      <p>KOKK GAKK CINTA AKUU???</p>
+    </div>
+  </div>
 
+  <script>
+    // Fungsi untuk menampilkan modal
+    function showDislikeModal() {
+      const modal = document.getElementById('dislikeModal');
+      modal.style.display = 'flex';
+      
+      // Menutup modal setelah 3 detik
       setTimeout(() => {
-        angryEmoji.remove();
-      }, 2000); // Hapus emoji setelah 2 detik
+        modal.style.display = 'none';
+      }, 3000);
     }
 
     // Event Listener untuk tombol Tidak Suka
     const dislikeBtn = document.getElementById('dislike-btn');
     dislikeBtn.addEventListener('click', () => {
-      showAngryEmoji();
+      showDislikeModal();
     });
 
     // Fungsi untuk membuat bunga yang bervariasi
